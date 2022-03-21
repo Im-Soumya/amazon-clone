@@ -1,17 +1,36 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { auth, db } from './firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import './Login.css'
 
 const Login = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const signIn = (e) => {
+  const signIn = async (e) => {
     e.preventDefault()
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password)
+      if (user) {
+        navigate("/")
+      }
+    } catch (e) {
+      alert(e.message)
+    }
   }
 
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault()
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password)
+      if (user) {
+        navigate("/")
+      }
+    } catch (e) {
+      alert(e.message)
+    }
   }
 
   return (
@@ -30,7 +49,7 @@ const Login = () => {
           <input
             type='text'
             value={email}
-            onChange={(e) => setEmail.apply(e.currentTarget.value)}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
           <h5>Password</h5>
           <input
