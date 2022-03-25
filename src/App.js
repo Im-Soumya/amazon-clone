@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import Header from './components/Header'
 import Checkout from './components/Checkout'
 import Home from './components/Home'
+import Orders from './components/Orders'
+import AllOrders from './components/AllOrders'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/Login';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -21,7 +23,6 @@ function App() {
     //will run only once when the content loads
     onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        console.log(currentUser)
         dispatch({
           type: "SET_USER",
           user: currentUser
@@ -39,6 +40,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+          <Route path='/orders' element={<><Header /><AllOrders /></>} />
           <Route path='/payment' element={<><Header /><Elements stripe={promise}><Payment /></Elements></>} />
           <Route path='/login' element={<Login />} />
           <Route path="/checkout" element={<><Header /><Checkout /></>} />

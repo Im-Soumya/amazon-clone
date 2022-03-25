@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import CheckoutProduct from './CheckoutProduct'
 import './Payment.css'
 import { useStateValue } from './StateProvider'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { getBasketTotal } from './reducer'
+import axios from './axios'
 import CurrencyFormat from 'react-currency-format'
+import { db } from './firebase'
+import { collection, doc } from 'firebase/firestore'
 
 const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue()
@@ -19,23 +22,48 @@ const Payment = () => {
   const stripe = useStripe()
   const elements = useElements()
 
-  // useEffect(() => {
-  //   const getClientSecret = async () => {
-  //     const response = await axios
-  //   } 
+  let navigate = useNavigate()
 
-  //   getClientSecret()
-  // }, [basket])
+  const userCollectionRef = collection(db, "users")
+
+  useEffect(() => {
+    // generate the special stripe secret which allows us to charge a customer
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: 'post',
+        // Stripe expects the total in a currencies subunits
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+      });
+      setClientSecret(response.data.clientSecret)
+    }
+
+    getClientSecret();
+  }, [basket])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setProcessing(true)
-    const payload = await stripe
+
+    navigate('/orders', { replace: true })
+    // setProcessing(true)
+    // const payload = await stripe.confirmCardPayment(clientSecret, {
+    //   payment_method: {
+    //     card: elements.getElement(CardElement)
+    //   }
+    // }).then(({ paymentIntent }) => {
+    //   setSucceeded(true)
+    //   setError(null)
+    //   setProcessing(false)
+    //   navigate("/orders", { replace: true });
+    // })
+
+    dispatch({
+      type: 'EMPTY_BASKET'
+    })
   }
 
   const handleChange = (e) => {
     setDisabled(e.empty)
-    setError(e.error ? e.error.message : "")
+    // setError(e.error ? e.error.message : "")
   }
 
   return (
