@@ -1,39 +1,43 @@
-[debug] [2022-03-24T10:21:42.972Z] ----------------------------------------------------------------------
-[debug] [2022-03-24T10:21:42.975Z] Command:       C:\Program Files\nodejs32\node.exe C:\Program Files\nodejs32\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2022-03-24T10:21:42.975Z] CLI Version:   10.4.2
-[debug] [2022-03-24T10:21:42.975Z] Platform:      win32
-[debug] [2022-03-24T10:21:42.976Z] Node Version:  v16.0.0
-[debug] [2022-03-24T10:21:42.977Z] Time:          Thu Mar 24 2022 15:51:42 GMT+0530 (India Standard Time)
-[debug] [2022-03-24T10:21:42.977Z] ----------------------------------------------------------------------
+[debug] [2022-03-29T09:43:25.378Z] ----------------------------------------------------------------------
+[debug] [2022-03-29T09:43:25.388Z] Command:       C:\Program Files\nodejs32\node.exe C:\Program Files\nodejs32\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2022-03-29T09:43:25.390Z] CLI Version:   10.4.2
+[debug] [2022-03-29T09:43:25.391Z] Platform:      win32
+[debug] [2022-03-29T09:43:25.391Z] Node Version:  v16.0.0
+[debug] [2022-03-29T09:43:25.473Z] Time:          Tue Mar 29 2022 15:13:25 GMT+0530 (India Standard Time)
+[debug] [2022-03-29T09:43:25.474Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2022-03-24T10:21:43.074Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2022-03-24T10:21:43.074Z] > authorizing via signed-in user (iamsoumyass@gmail.com)
+[debug] [2022-03-29T09:43:25.933Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-29T09:43:25.935Z] > authorizing via signed-in user (iamsoumyass@gmail.com)
 [info] i  emulators: Starting emulators: functions, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting"}}
-[debug] [2022-03-24T10:21:44.193Z] [hub] writing locator at C:\Users\user\AppData\Local\Temp\hub-clone-5c53d.json
+[debug] [2022-03-29T09:43:27.250Z] [hub] writing locator at C:\Users\user\AppData\Local\Temp\hub-clone-5c53d.json
 [warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, pubsub, storage\u001b[22m"}}
 [info] +  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
-[debug] [2022-03-24T10:21:45.284Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\iamsoumyass_gmail_com_application_default_credentials.json
-[debug] [2022-03-24T10:21:45.290Z] Setting GAC to C:\Users\user\AppData\Roaming\firebase\iamsoumyass_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\user\\AppData\\Roaming\\firebase\\iamsoumyass_gmail_com_application_default_credentials.json"}}
-[debug] [2022-03-24T10:21:45.304Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig [none]
-[debug] [2022-03-24T10:21:46.109Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig 200
-[debug] [2022-03-24T10:21:46.110Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig {"projectId":"clone-5c53d","storageBucket":"clone-5c53d.appspot.com"}
-[debug] [2022-03-24T10:21:47.166Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites 
-[debug] [2022-03-24T10:21:49.404Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites 200
-[debug] [2022-03-24T10:21:49.404Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites {"sites":[{"name":"projects/787314374922/sites/clone-5c53d","defaultUrl":"https://clone-5c53d.web.app","appId":"1:787314374922:web:5eaf4b05bfce82943822f3","type":"DEFAULT_SITE"}]}
-[debug] [2022-03-24T10:21:49.406Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config [none]
-[debug] [2022-03-24T10:21:50.970Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config 200
-[debug] [2022-03-24T10:21:50.970Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config {"projectId":"clone-5c53d","appId":"1:787314374922:web:5eaf4b05bfce82943822f3","storageBucket":"clone-5c53d.appspot.com","apiKey":"AIzaSyChOp7HcCjg5bV9LqvvbLD_IKYRBsGRN88","authDomain":"clone-5c53d.firebaseapp.com","messagingSenderId":"787314374922","measurementId":"G-NGMY6KYWC9"}
+[debug] [2022-03-29T09:43:28.616Z] defaultcredentials: writing to file C:\Users\user\AppData\Roaming\firebase\iamsoumyass_gmail_com_application_default_credentials.json
+[debug] [2022-03-29T09:43:28.621Z] Setting GAC to C:\Users\user\AppData\Roaming\firebase\iamsoumyass_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\user\\AppData\\Roaming\\firebase\\iamsoumyass_gmail_com_application_default_credentials.json"}}
+[debug] [2022-03-29T09:43:28.629Z] > refreshing access token with scopes: []
+[debug] [2022-03-29T09:43:28.632Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-29T09:43:29.306Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Tue, 29 Mar 2022 09:43:30 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-29T09:43:29.356Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig [none]
+[debug] [2022-03-29T09:43:30.432Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig 200
+[debug] [2022-03-29T09:43:30.433Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/adminSdkConfig {"projectId":"clone-5c53d","storageBucket":"clone-5c53d.appspot.com","locationId":"asia-south1"}
+[debug] [2022-03-29T09:43:31.518Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites 
+[debug] [2022-03-29T09:43:33.944Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites 200
+[debug] [2022-03-29T09:43:33.944Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clone-5c53d/sites {"sites":[{"name":"projects/787314374922/sites/clone-5c53d","defaultUrl":"https://clone-5c53d.web.app","appId":"1:787314374922:web:5eaf4b05bfce82943822f3","type":"DEFAULT_SITE"}]}
+[debug] [2022-03-29T09:43:33.945Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config [none]
+[debug] [2022-03-29T09:43:35.862Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config 200
+[debug] [2022-03-29T09:43:35.863Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-5c53d/webApps/1:787314374922:web:5eaf4b05bfce82943822f3/config {"projectId":"clone-5c53d","appId":"1:787314374922:web:5eaf4b05bfce82943822f3","storageBucket":"clone-5c53d.appspot.com","locationId":"asia-south1","apiKey":"AIzaSyChOp7HcCjg5bV9LqvvbLD_IKYRBsGRN88","authDomain":"clone-5c53d.firebaseapp.com","messagingSenderId":"787314374922","measurementId":"G-NGMY6KYWC9"}
 [info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
 [info] +  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
-[debug] [2022-03-24T10:21:53.100Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2022-03-24T10:21:53.101Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2022-03-24T10:21:53.102Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\user\\.cache\\firebase\\emulators\\ui-v1.6.5\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\user\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.6.5\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[debug] [2022-03-29T09:43:38.322Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-03-29T09:43:38.323Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-03-29T09:43:38.324Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\user\\.cache\\firebase\\emulators\\ui-v1.6.5\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\user\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.6.5\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
 [info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2022-03-24T10:21:54.273Z] Web / API server started at localhost:4000
+[debug] [2022-03-29T09:43:40.639Z] Web / API server started at localhost:4000
  {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
 [info] i  functions: Watching "C:\Users\user\Desktop\MANI\WEB DEV\REACT\amazon-clone\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\user\\Desktop\\MANI\\WEB DEV\\REACT\\amazon-clone\\functions\" for Cloud Functions..."}}
-[debug] [2022-03-24T10:21:54.310Z] Validating nodejs source
-[debug] [2022-03-24T10:22:02.253Z] > [functions] package.json contents: {
+[debug] [2022-03-29T09:43:40.935Z] Validating nodejs source
+[debug] [2022-03-29T09:44:08.644Z] > [functions] package.json contents: {
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
@@ -59,8 +63,8 @@
   },
   "private": true
 }
-[debug] [2022-03-24T10:22:02.254Z] Building nodejs source
-[debug] [2022-03-24T10:22:02.255Z] Analyzing nodejs backend spec
+[debug] [2022-03-29T09:44:08.666Z] Building nodejs source
+[debug] [2022-03-29T09:44:08.667Z] Analyzing nodejs backend spec
 [info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
 [info] i  ui: Stopping Emulator UI {"metadata":{"emulator":{"name":"ui"},"message":"Stopping Emulator UI"}}
 [warn] !  Emulator UI has exited upon receiving signal: SIGINT 

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import CheckoutProduct from './CheckoutProduct'
 import './Payment.css'
 import { useStateValue } from './StateProvider'
+import CheckoutProduct from './CheckoutProduct'
+import { Link, useNavigate } from 'react-router-dom'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import CurrencyFormat from 'react-currency-format'
 import { getBasketTotal } from './reducer'
 import axios from './axios'
-import CurrencyFormat from 'react-currency-format'
 import { db } from './firebase'
-import { collection, doc } from 'firebase/firestore'
+import { collection, doc, setDoc } from 'firebase/firestore'
 
 const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue()
+
+  const stripe = useStripe()
+  const elements = useElements()
 
   const [processing, setProcessing] = useState("")
   const [succeeded, setSucceeded] = useState(false)
@@ -19,12 +22,8 @@ const Payment = () => {
   const [disabled, setDisabled] = useState(true)
   const [clientSecret, setClientSecret] = useState(true)
 
-  const stripe = useStripe()
-  const elements = useElements()
 
   let navigate = useNavigate()
-
-  const userCollectionRef = collection(db, "users")
 
   useEffect(() => {
     // generate the special stripe secret which allows us to charge a customer
@@ -42,23 +41,31 @@ const Payment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setProcessing(true)
 
-    navigate('/orders', { replace: true })
-    // setProcessing(true)
-    // const payload = await stripe.confirmCardPayment(clientSecret, {
-    //   payment_method: {
-    //     card: elements.getElement(CardElement)
-    //   }
-    // }).then(({ paymentIntent }) => {
-    //   setSucceeded(true)
-    //   setError(null)
-    //   setProcessing(false)
-    //   navigate("/orders", { replace: true });
-    // })
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
+    }).then(({ paymentIntent }) => {
+      console.log(paymentIntent)
+      const ref = doc(db, 'users', user?.uid, 'orders', paymentIntent.id)
+      setDoc(ref, {
+        basket: basket,
+        amount: paymentIntent.amount,
+        created: paymentIntent.created
+      })
+
+      setSucceeded(true)
+      setError(null)
+      setProcessing(false)
+    })
 
     dispatch({
       type: 'EMPTY_BASKET'
     })
+
+    navigate("/orders", { replace: true });
   }
 
   const handleChange = (e) => {
@@ -86,8 +93,9 @@ const Payment = () => {
             <h3>Review items and delivery</h3>
           </div>
           <div className='payment-items'>
-            {basket.map(item => (
+            {basket.map((item, index) => (
               <CheckoutProduct
+                key={index}
                 id={item.id}
                 title={item.title}
                 price={item.price}

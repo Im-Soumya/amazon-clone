@@ -1,25 +1,37 @@
-import React from 'react'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { green } from '@mui/material/colors';
+import React, { useState, useEffect } from 'react';
+import { db } from './firebase';
 import './Orders.css'
+import { useStateValue } from './StateProvider';
+import Order from './Order';
+import { query, collection, onSnapshot, orderBy } from 'firebase/firestore';
 
 const Orders = () => {
-  const styles = {
-    largeIcon: {
-      fontSize: "150px",
-      color: "green",
-      textAlign: "center",
-      padding: "100px auto",
-    },
-  }
+  const [{ basket, user }, dispatch] = useStateValue();
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      const ref = collection(db, 'users')
+      const orderedOrders = query(ref, orderBy('created', 'desc'))
+      onSnapshot(orderedOrders, snapShot => {
+        setOrders(snapShot.docs.map(doc => ({
+          id: doc.id,
+          data: doc.data()
+        })))
+      })
+    } else {
+      setOrders([])
+    }
+  }, [user])
+
   return (
     <div className='orders'>
-      <h1 className="orders-title">Order Confirmed</h1>
-      <CheckCircleOutlineIcon
-        style={styles.largeIcon}
-        className="check-icon"
-      />
-      <h3 className='orders-footer'>Thank You!</h3>
+      <h1>Your Orders</h1>
+      <div className='orders_order'>
+        {orders?.map(order => (
+          <Order order={order} />
+        ))}
+      </div>
     </div>
   )
 }
